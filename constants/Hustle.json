@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Plumber",
+        "id": "plumber"
+    },
+    {
+        "name": "Electrician",
+        "id": "electrician"
+    },
+    {
+        "name": "Mechanic",
+        "id": "mechanic"
+    },
+    {
+        "name": "Cleaner",
+        "id": "cleaner"
+    },
+    {
+        "name": "Air Condition Specialist",
+        "id": "ac"
+    }
+]
