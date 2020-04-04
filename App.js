@@ -9,8 +9,9 @@ import firebase from 'firebase';
 import {NavigationContainer} from '@react-navigation/native'
 import * as Facebook from 'expo-facebook';
 import { FACEBOOK_APP_ID} from './constants/keys';
+import {PersistGate} from 'redux-persist/integration/react';
 import {Provider} from 'react-redux';
-import store from './reducers/store';
+import {store, persistor} from './reducers/store';
 
 import AppNavigator from './navigation/AppNavigator';
 
@@ -25,11 +26,14 @@ export default function App (props){
      
   }
   return (
-  <Provider store = {store}>
-    <NavigationContainer>
-      <AppNavigator/>
-    </NavigationContainer>
-  </Provider>
+    <Provider store={store}>
+      <PersistGate loadig={null} persistor={persistor}>
+        <NavigationContainer>
+          <AppNavigator />
+        </NavigationContainer>
+      </PersistGate>
+
+    </Provider>
     
     
   )

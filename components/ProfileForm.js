@@ -29,7 +29,7 @@ export default class ProfileForm extends Component{
                     {photoURL ? <Avatar showEditButton rounded source = {{uri : photoURL}} style={styles.avatarStyle} /> : <Avatar showEditButton title = "AV" style = {styles.avatarStyle} />  }
                     <Input value = {this.props.phone || ""} inputStyle = {styles.inputStyle} containerStyle={styles.inputContainerStyle} 
                     placeholder="Phone Number" placeholderTextColor = {Colors.secondaryText} />
-                    <Picker style={styles.pickerStyle} itemTextStyle = {styles.pickerItemStyle}>
+                    <Picker style={styles.pickerStyle} itemTextStyle = {styles.pickerItemStyle} textStyle = {styles.pickerItemStyle}>
                         <Picker.Item  style = {styles.pickerItemStyle } value="" enabled={false} label="Select Your Location" />
                         {
                             regions.map((region, i) => {
