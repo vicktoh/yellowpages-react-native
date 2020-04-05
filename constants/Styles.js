@@ -1,4 +1,6 @@
 import Colors from './Colors';
+let FontBold =  'Playfiar Display Bold';
+let FontNormal = 'Playfair Display';
 
 export default {
     shadow: {
@@ -13,7 +15,7 @@ export default {
         elevation: 5
     },
     headerTextWithShadow: {
-        fontFamily: 'Playfiar Display Bold',
+        fontFamily: FontBold,
         fontSize: 40,
         color: 'yellow',
         textShadowColor: 'rgba(0, 0, 0, 0.75)',
@@ -21,19 +23,41 @@ export default {
         textShadowRadius: 8
     },
     secondarySubHeading: {
-        fontFamily: 'Playfair Display',
+        fontFamily: 'FontNormal',
         color: '#8a8986',
     },
     formInputText: {
-        fontFamily: 'Playfair Display',
+        fontFamily: 'FontNormal',
         color: '#8a8986',
         fontSize: 14,
     },
     headerTextPrimary:{
         color: Colors.primaryText,
         fontSize: 24,
-        fontFamily: 'Playfiar Display Bold',
+        fontFamily: FontBold,
 
-    }
+    },
+    header2TextPrimary:{
+        color: Colors.primaryText,
+        fontSize: 24,
+        fontFamily: FontNormal, 
+    },
+    headerTextSecondary:{
+        color: Colors.secondaryText,
+        fontSize: 20,
+        fontFamily: FontNormal,
+    },
+    header2TextSecondary:{
+        color: Colors.secondaryText,
+        fontSize: 18,
+        fontFamily: FontNormal,
+    },
+    secondaryText:{
+        fontSize: 16,
+        fontFamily: FontNormal,
+        color: Colors.secondaryText
+    },
+    FontBold,
+    FontNormal
 
 }

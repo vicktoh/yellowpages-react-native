@@ -15,5 +15,6 @@ export default {
   noticeText: '#fff',
   headerTextColor: "#ffd",
   backgroundColor: '#ffd',
+  appBackground: "white"
   
 };

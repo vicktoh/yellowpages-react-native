@@ -4,7 +4,7 @@ import {Button, Text} from 'react-native-elements'
 
 
 
-export default BussinessScreen = (props)=>{
+const  BussinessScreen = (props)=>{
 
   return (
     <View>
@@ -16,3 +16,5 @@ export default BussinessScreen = (props)=>{
 
   )
 }
+
+export default BussinessScreen;

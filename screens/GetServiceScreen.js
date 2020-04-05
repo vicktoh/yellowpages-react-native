@@ -4,7 +4,7 @@ import {Button, Text} from 'react-native-elements'
 
 
 
-export default GetServiceScreen = (props)=>{
+const  GetServiceScreen = (props)=>{
 
   return (
     <View>
@@ -16,3 +16,5 @@ export default GetServiceScreen = (props)=>{
 
   )
 }
+
+export default GetServiceScreen
