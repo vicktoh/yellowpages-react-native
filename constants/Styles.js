@@ -57,6 +57,11 @@ export default {
         fontFamily: FontNormal,
         color: Colors.secondaryText
     },
+    secondaryTextSmall:{
+        fontSize: 14,
+        fontFamily: FontNormal,
+        color: Colors.secondaryText
+    },
     FontBold,
     FontNormal
 

@@ -5,7 +5,7 @@ import { useStore } from 'react-redux';
 import HomeScreen from '../screens/HomeScreen';
 import SignupScreen from '../screens/SignupScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
-import GetServiceScreen from '../screens/GetServiceScreen';
+import FindHandyMan from '../screens/FindHandyMan';
 import ProfileScreen from '../screens/ProfileScreen';
 import BussinessScreen from '../screens/BussinessScreen';
 
@@ -29,7 +29,7 @@ const HomeStackNavigator = ()=>{
         <Stack.Navigator>
             <Stack.Screen name = "Home" options = {{headerShown: false}}  component = {HomeScreen}/>
             <Stack.Screen name = "Profile" component = {ProfileScreen} />
-            <Stack.Screen name = "Service" component = {GetServiceScreen} />
+            <Stack.Screen name = "Find" component = {FindHandyMan} />
         </Stack.Navigator>
     )
 }

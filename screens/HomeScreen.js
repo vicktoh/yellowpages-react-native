@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
-import {Button, SearchBar, Input ,Text, Avatar} from 'react-native-elements'
+import {View, FlatList} from 'react-native';
+import {Button, SearchBar, Input ,Text, Avatar, Image} from 'react-native-elements'
 import {connect} from 'react-redux';
 import WelcomeComponent from '../components/WelcomeComponent';
+import RowSwipe from '../components/RowSwipe';
 
 import Styles from '../constants/Styles';
 import Colors from '../constants/Colors';
@@ -10,13 +11,45 @@ import PhoneProps from '../constants/Layout';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const WINDOW = PhoneProps.window;
-
+const ACTIONS = [
+  {
+    id: 'Find',
+    description: "Quickly get the services of top handymen around you.",
+    title: "Find A Handyman",
+    image: 'bgmain.jpg',
+    page: 'post'
+  },
+  {
+    id: 'Post',
+    description: "Describe a job you require to get done, handymen will send their proposals for your job",
+    title: "Post a Job",
+    image: 'post.jpg',
+    page: 'find'
+  }
+]
 
 
 class HomeScreen extends Component{
   state = {
     search: '',
     recentJobs: []
+  }
+
+  renderAction(payload,navigate){
+    let action = payload.item;
+    let path = `../assets/images/${action.image}`
+    
+    return (
+      <View key = {action.id} style = {styles.sectionContainer}>
+          <Text style = {Styles.header2TextPrimary}>{action.title}</Text>
+          <Image style = {styles.imageStyle} source = {action.image == "post.jpg" ? require('../assets/images/post.jpg') : require('../assets/images/bgmain.jpg')} containerStyle = {styles.imageContainerStyle}/>
+          <Text style = {[Styles.secondaryText, { alignSelf: 'center',}]}>{action.description}</Text>
+          <Button title = {action.id} buttonStyle = {styles.buttonStyle} containerStyle = {styles.buttonContainerStyle} onPress = {()=>{navigate(action.id)}} />
+        </View>
+    )
+  }
+  gotoScreen(id){
+    this.props.navigation.navigate(id);
   }
   render = ()=> {
     const {search} = this.state;
@@ -26,24 +59,17 @@ class HomeScreen extends Component{
         <Text style = {Styles.headerTextPrimary}>Home</Text>
         <Avatar title = "AV" size = "medium" rounded source = {{ uri: this.props.auth.photoURL}} />
       </View>
-      <View>
-        <SearchBar placeholder = "Search" 
-        onChangeText = {(search)=>{this.setState({search})}}
-        searchIcon = {
-          <Icon name = "search" size = {24} color = {Colors.primaryText} />
-        }
-        value = {search}
-        containerStyle = {styles.searchContainerStyle}
-        inputContainerStyle = {styles.searchInputContainerStyle} 
-        inputStyle = {styles.searchInputStyle} 
-        />
-        <View style = {{padding: 15}}>
-          <Text style = {{...Styles.headerTextPrimary, fontSize: 20}}>Recent Activity</Text>
-          {this.state.recentJobs.length > 0 ?
-             <WelcomeComponent text = "Get started with local services near you" /> :
-              <WelcomeComponent text = "Welcome" description = "Get the best local service providers around you"/>}
-        </View>
-      </View>
+      {
+        this.state.recentJobs.length > 0 &&
+          <View>
+            <RowSwipe/>
+          </View>
+      }
+      <FlatList 
+      data = {ACTIONS}
+      renderItem = {(activity) =>this.renderAction(activity, this.props.navigation.navigate)}
+      keyExtractor = { item => item.id}
+      />
     </View>
 
   )}
@@ -75,22 +101,24 @@ const styles = {
   headerTextStyle: {
 
   },
-  searchContainerStyle:{
-    backgroundColor: 'white',
+  imageStyle:{
+    height: 150,
+    width: WINDOW.width * .9
+  },
+  imageContainerStyle:{
     margin: 10,
-    borderColor: Colors.primaryText,
-    borderWidth: 1,
-    borderTopColor: Colors.primaryText,
-    borderBottomColor: Colors.primaryText,
-    borderRadius: 10
+    alignSelf: 'center',
+  },
+  sectionContainer:{
+    padding: 20,
+    flextDirection: 'column',
+    
+  },
+  buttonStyle:{
+    backgroundColor: Colors.primaryColor
+  },
+  buttonContainerStyle:{
+    marginTop: 20,
 
-  },
-  searchInputStyle:{
-    backgroundColor: 'white',
-    textAlign : 'center',
-    fontFamily: Styles.FontNormal,
-  },
-  searchInputContainerStyle:{
-    backgroundColor: 'white'
   }
 }
